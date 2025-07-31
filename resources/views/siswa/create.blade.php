@@ -12,6 +12,15 @@
     <a href="/">Kembali</a>
     <form action="" method="POST">
         <div>
+            <label for="">Kelas</label>
+            <br>
+            <select name="kelas_id">
+                <option value="">XII PPLG 1</option>
+                <option value="">XII PPLG 2</option>
+                <option value="">XII PPLG 3</option>
+            </select>
+        </div>
+        <div>
             <label for="">Name</label>
             <br>
             <input type="text" name="name">
