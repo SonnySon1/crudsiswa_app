@@ -10,14 +10,15 @@
     <h1>Halaman Tambah Siswa</h1>
     <p>Tambah Data Siswa</p>
     <a href="/">Kembali</a>
-    <form action="" method="POST">
+    <form action="/siswa/store" method="POST">
+        @csrf
         <div>
             <label for="">Kelas</label>
             <br>
             <select name="kelas_id">
-                <option value="">XII PPLG 1</option>
-                <option value="">XII PPLG 2</option>
-                <option value="">XII PPLG 3</option>
+                <option value="1">XII PPLG 1</option>
+                <option value="2">XII PPLG 2</option>
+                <option value="3">XII PPLG 3</option>
             </select>
         </div>
         <div>
@@ -53,13 +54,13 @@
         <div>
             <label for="">No Handphone</label>
             <br>
-            <input type="password" name="no_handphone">
+            <input type="tel" name="no_handphone">
         </div>
         <br>
         <div>
             <label for="">Foto</label>
             <br>
-            <input type="file" name="no_handphone">
+            <input type="file" name="foto">
         </div>
         <br>
         <div>
