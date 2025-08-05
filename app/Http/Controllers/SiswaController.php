@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Clas;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,10 @@ class SiswaController extends Controller
 
     // fungsi untuk mengarahkan ke halaman create
     public function create(){
-        return view('siswa.create');
+        // siapkan data / panggil data kelas
+        $clases = Clas::all();
+        
+        return view('siswa.create', compact('clases'));
     }
 
     
