@@ -10,7 +10,7 @@
     <h1>Halaman Tambah Siswa</h1>
     <p>Tambah Data Siswa</p>
     <a href="/">Kembali</a>
-    <form action="/siswa/store" method="POST">
+    <form action="/siswa/store" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
             <label for="">Kelas</label>

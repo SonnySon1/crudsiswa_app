@@ -33,13 +33,13 @@ class SiswaController extends Controller
             'alamat'        => 'required',  
             'email'         => 'required | unique:users,email',  
             'password'      => 'required',  
-            'no_handphone'  => 'required | unique:users,no_handphone'
+            'no_handphone'  => 'required | unique:users,no_handphone',
+            'foto'          => 'required | image | mimes:jpeg,png,jpg,gif'
         ]);
 
         // siapkan data yang akan di masukan
         $datasiswa_store = [
             'clas_id'       => $request->kelas_id,
-            'photo'         => 'foto.jpg',
             'name'          => $request->name,
             'nisn'          => $request->nisn,
             'alamat'        => $request->alamat,
@@ -47,6 +47,9 @@ class SiswaController extends Controller
             'password'      => $request->password,
             'no_handphone'  => $request->no_handphone
         ];
+
+        // upload gambar
+        $datasiswa_store['photo'] = $request->file('foto')->store('profilesiswa', 'public');
 
         // masukan data ke dalam tabel user
         User::create($datasiswa_store);
