@@ -21,19 +21,21 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>foto.jpg</td>
-                <td>Rizqi</td>
-                <td>XII PPLG 2</td>
-                <td>Jl.Abc</td>
-                <td>
-                    <a href="">Delete</a>
-                    |
-                    <a href="">Edit</a>
-                    |
-                    <a href="">Detail</a>
-                </td>
-            </tr>
+            @foreach ($siswas as $siswa)
+                <tr>
+                    <td><img src="{{ asset('storage/'.$siswa->photo) }}" width="40" alt=""></td>
+                    <td>{{ $siswa->name }}</td>
+                    <td>{{ $siswa->clas->name }}</td>
+                    <td>{{ $siswa->alamat }}</td>
+                    <td>
+                        <a onclick="return confirm('yakin?')" href="/siswa/delete/{{ $siswa->id }}">Delete</a>
+                        |
+                        <a href="">Edit</a>
+                        |
+                        <a href="/siswa/show/{{ $siswa->id }}">Detail</a>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 </body>
