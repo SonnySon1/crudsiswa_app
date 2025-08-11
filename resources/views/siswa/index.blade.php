@@ -32,7 +32,7 @@
                         |
                         <a href="">Edit</a>
                         |
-                        <a href="">Detail</a>
+                        <a href="/siswa/show/{{ $siswa->id }}">Detail</a>
                     </td>
                 </tr>
             @endforeach
