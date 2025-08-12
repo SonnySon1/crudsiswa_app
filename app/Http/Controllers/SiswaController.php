@@ -94,4 +94,15 @@ class SiswaController extends Controller
         // kembalikan user ke halaman show dan kirimkan data user yang di ambil berdasarkan id
         return view('siswa.show', compact('datauser'));
     }
+
+
+    public function edit($id) {
+        // siapkan data / panggil data kelas
+        $clases = Clas::all();
+
+        // ambil data user / siswa di dalam tabel user berdasarkan id
+        $datauser = User::find($id);
+
+        return view('siswa.edit', compact('clases', 'datauser'));
+    }
 }
