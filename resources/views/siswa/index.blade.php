@@ -30,7 +30,7 @@
                     <td>
                         <a onclick="return confirm('yakin?')" href="/siswa/delete/{{ $siswa->id }}">Delete</a>
                         |
-                        <a href="">Edit</a>
+                        <a href="/siswa/edit/{{ $siswa->id }}">Edit</a>
                         |
                         <a href="/siswa/show/{{ $siswa->id }}">Detail</a>
                     </td>
