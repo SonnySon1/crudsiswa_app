@@ -13,32 +13,28 @@
         <a href="/clas">Menu Kelas</a>
     </div>
     <hr>
-    <h1>Halaman Beranda</h1>
-    <p>List Data Siswa</p>
-    <a href="/siswa/create">Create Siswa</a>
+    <h1>Halaman Kelas</h1>
+    <p>List Data Kelas</p>
+    <a href="/clas/create">Create Kelas</a>
     <table border="1">
         <thead>
             <tr>
-                <th>Photo</th>
                 <th>Name</th>
-                <th>Kelas</th>
-                <th>Alamat</th>
+                <th>Description</th>
                 <th>Option</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($siswas as $siswa)
+            @foreach ($clases as $clas)
                 <tr>
-                    <td><img src="{{ asset('storage/'.$siswa->photo) }}" width="40" alt=""></td>
-                    <td>{{ $siswa->name }}</td>
-                    <td>{{ $siswa->clas->name }}</td>
-                    <td>{{ $siswa->alamat }}</td>
+                    <td>{{ $clas->name }}</td>
+                    <td>{{ $clas->description }}</td>
                     <td>
-                        <a onclick="return confirm('yakin?')" href="/siswa/delete/{{ $siswa->id }}">Delete</a>
+                        <a onclick="return confirm('yakin?')" href="/clas/delete/{{ $clas->id }}">Delete</a>
                         |
-                        <a href="/siswa/edit/{{ $siswa->id }}">Edit</a>
+                        <a href="/clas/edit/{{ $clas->id }}">Edit</a>
                         |
-                        <a href="/siswa/show/{{ $siswa->id }}">Detail</a>
+                        <a href="/clas/show/{{ $clas->id }}">Detail</a>
                     </td>
                 </tr>
             @endforeach
