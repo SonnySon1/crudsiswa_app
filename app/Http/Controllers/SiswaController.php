@@ -105,4 +105,52 @@ class SiswaController extends Controller
 
         return view('siswa.edit', compact('clases', 'datauser'));
     }
+
+
+
+    // funsi update data siswa
+    public function update(Request $request, $id) {
+        // validasi data
+         $request->validate([
+            'name'          => 'required',
+            'nisn'          => 'required',  
+            'alamat'        => 'required',  
+            'email'         => 'required',
+            'no_handphone'  => 'required',
+        ]);
+
+        // cari di dalam tabel user apakah ada user yang akan di update cari berdasarkan id
+        $datasiswa = User::find($id);
+
+        // siapkan data yang akan di simpan sebagai update
+        $datasiswa_update = [
+            'clas_id'       => $request->kelas_id,
+            'name'          => $request->name,
+            'nisn'          => $request->nisn,
+            'alamat'        => $request->alamat,
+            'email'         => $request->email,
+            'no_handphone'  => $request->no_handphone
+        ];
+
+        // cek apakah user update password atau tidak
+        if ($request->password != null) {
+            $datasiswa_update['password'] = $request->password;
+        }
+
+        // cek apakah user update foto atau tidak
+        if ($request->hasFile('foto')) {
+             // hapus file gambar sebelumnya dari file
+             Storage::disk('public')->delete($datasiswa->photo);
+
+             // upload gambar baru
+             $datasiswa_update['photo'] = $request->file('foto')->store('profilesiswa', 'public');
+        }
+
+
+        // simpan data ke dalam database dengan data yang terbaru sesuai update
+        $datasiswa->update($datasiswa_update);
+
+        // pindahkan user ke halaman beranda
+        return redirect('/');
+    }
 }
